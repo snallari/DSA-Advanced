@@ -5,13 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "node",
-            "request": "launch",
             "name": "Launch Program",
+            "program": "${workspaceFolder}/twopointers/3sum.js",
+            "request": "launch",
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\sai\\Parenthethis.js"
+            "type": "node"
         }
     ]
 }
