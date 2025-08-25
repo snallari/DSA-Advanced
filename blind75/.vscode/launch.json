@@ -6,7 +6,7 @@
     "configurations": [
         {
             "name": "Launch Program",
-            "program": "${workspaceFolder}/twopointers/3sum.js",
+            "program": "${workspaceFolder}/twopointers/hasduplicate.js",
             "request": "launch",
             "skipFiles": [
                 "<node_internals>/**"
