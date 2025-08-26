@@ -1,14 +1,16 @@
-function container(arr){
-    let i=0, j=arr.length-1, maxArea=0
-    while(i<j){
-        const height = Math.min(arr[i], arr[j]);
-        const width = j - i;
-        maxArea = Math.max(maxArea, height * width);
-        if(arr[i]<arr[j]){
-            i++
-        }else{
-            j--
+function container(heights){
+     let left=0 , right=heights.length-1, max=0
+        while(left<right){
+            let h=Math.min(heights[left],heights[right])
+            let w=right-left
+            max=Math.max(max, h*w)
+            if(heights[left]<heights[right]){
+                left++
+            }else{
+                right--
+            }
         }
-    }
-    return maxArea
+    return max
 }
+
+console.log(container([1,8,6,2,5,4,8,3,7])) //49

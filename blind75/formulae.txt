@@ -1,3 +1,8 @@
 
 FORMULAE: 
 BS=
+
+FORMULAE:
+AREA= let h = Math.min(height[left], height[right]);
+    let w = right - left;
+    maxArea = Math.max(maxArea, h * w);
