@@ -6,3 +6,6 @@ FORMULAE:
 AREA= let h = Math.min(height[left], height[right]);
     let w = right - left;
     maxArea = Math.max(maxArea, h * w);
+
+GRAPHS:
+ for(let neigh of this.adjacencyList[pop])
