@@ -6,7 +6,7 @@
     "configurations": [
         {
             "name": "Launch Program",
-            "program": "${workspaceFolder}/revision/BST.js",
+            "program": "${workspaceFolder}/revision/LL.js",
             "request": "launch",
             "skipFiles": [
                 "<node_internals>/**"
