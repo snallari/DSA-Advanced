@@ -54,6 +54,10 @@ class heap {
         }
     }
 
+    getParent(index){
+        return Math.floor((index-1)/2)
+    }
+
     /**
      * Inserts a value into the heap and maintains the max-heap property by bubbling up the new value.
      *
@@ -65,7 +69,7 @@ class heap {
         this.values.push(val)
         index = this.values.length - 1
             while (index>0) {
-                median = Math.floor((index-1) / 2)
+                median = this.getParent(index)
                  //console.log("inserted", this.values[median], this.values[index])
                 if (this.values[index] > this.values[median]) {
                    // console.log("b4", this.values[median], this.values[index], this.values)
