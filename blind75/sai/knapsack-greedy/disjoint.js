@@ -1,4 +1,4 @@
-class disjoint{
+export default class disjoint{
     constructor(n){
         this.parent=new Array(n)
         for(let i=0;i<n;i++){

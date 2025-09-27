@@ -1,4 +1,4 @@
-class heaps{
+export default class HeapsSai{
     constructor(){
         this.values=[]
     }
@@ -38,6 +38,10 @@ class heaps{
             }
         }
 
+    }
+
+    extractMin(){
+        return this.values.shift()
     }
 
      bubbleUpMax(){
@@ -82,7 +86,7 @@ class heaps{
 
 }
 
-let h=new heaps()
+let h = new HeapsSai()
 //10, 20, 5, 6, 1, 8, 9
 h.insert(10);
 h.insert(20);

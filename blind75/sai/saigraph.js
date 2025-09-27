@@ -26,14 +26,14 @@ class Graph {
         this.addEdge(1, 2)
         this.addEdge(1, 3)
         this.addEdge(2, 4)
-        this.addEdge(3, 4)
+        //this.addEdge(3, 4)
         console.log("adjancency", this.adjancencyList);
 
     }
 
     toposort(v, edges) {
         let graph = new Graph()
-        let indegree = {}, q = [], qpop, results=[]
+        let indegree = {}, q = [], qpop, results = []
         for (let i = 0; i < v.length; i++) {
             graph.addVertex(v[i])
             indegree[v[i]] = 0
@@ -66,7 +66,7 @@ class Graph {
             return [];
         }
 
-       // console.log("indegree",  indegree)
+        // console.log("indegree",  indegree)
         return results
     }
 
@@ -111,7 +111,7 @@ class Graph {
     }
 
 
-     courseSchedule2(courses, pre) {
+    courseSchedule2(courses, pre) {
         let graph = new Graph()
         let indegree = []
         for (let i = 0; i < courses; i++) {
@@ -126,7 +126,7 @@ class Graph {
         //instead of visited, we push the courses with indgree 0 into queue 
         // in bfs we push the first visited node into queue and set visited and traverse the graph
         let q = []
-        for (let i=0; i<courses; i++) {
+        for (let i = 0; i < courses; i++) {
             if (indegree[i] == 0) {
                 q.push(i)
             }
@@ -192,17 +192,36 @@ class Graph {
         return results
     }
 
-    djkastars(){
-        
+    krushal(nodes, edges) {
+        let min = new heaps()
+        min.insert(...nodes)
+        let result = []
+        while (min.values.length) {
+            let node = min.extractMin()
+            if (!node.visited) {
+                node.visited = true
+                result.push(node)
+            }
+            let disjoint = new disjoint(nodes.length)
+            if (disjoint.find(node) !== disjoint.find(node.next)) {
+                disjoint.union(node, node.next)
+                result.push({ node1: node, node2: node.next, weight: edges.weight })
+                totalWeight += edges.weight
+                node.next.visited = true
+            } else {
+                node.next.visited = true
+            }
+        }
     }
 }
 
 let g = new Graph()
-//g.cyclic()
+g.cyclic()
+g.krushal()
 //g.courseSchedule([1, 2, 3, 4], [[1, 2], [1, 3], [2, 4], [3, 4]])
 //console.log(g.bfs(1))
 //console.log("clone",g.clone(1))
 //g.toposort([1, 2, 3, 4], [[1, 2], [1, 3], [2, 4], [3, 4]])
 //g.toposort([1,2,3,4],[[1,2],[2,3],[3,4]])
-console.log(g.courseSchedule2(2,[[1,0]]))
+//console.log(g.courseSchedule2(2,[[1,0]]))
 
