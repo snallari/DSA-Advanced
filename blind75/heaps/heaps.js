@@ -10,6 +10,22 @@ class heap {
         }
     }
 
+    lastStoneWeight(stones) {
+        for (let i = 0; i < stones.length; i++) {
+            this.insert(stones[i])
+        }
+        while(this.values.length>1){
+            let first=this.delete()
+            let second=this.delete()
+            if(first!==second){
+                this.insert(first-second)
+            }else{
+                console.log("both destroyed")
+            }
+        }
+        return this.values.length > 0 ? this.values : [0];
+    }
+
     /**
      * Removes and returns the element at the given 1-based index from the heap.
      * @param {number} k - The 1-based index of the element to pop.
@@ -98,16 +114,16 @@ class heap {
         index = this.values.length - 1
         while (index > 0) {
             median = this.getParent(index)
-            //console.log("inserted", this.values[median], this.values[index])
+            console.log("inserted", this.values[median], this.values[index])
             if (this.values[index] > this.values[median]) {
-                // console.log("b4", this.values[median], this.values[index], this.values)
+                console.log("b4", this.values[median], this.values[index], this.values)
                 this.swap(median, index, this.values)
                 index = median
             } else {
                 break;
             }
         }
-        //console.log("inserted", this.values)
+        console.log("inserted", this.values)
     }
     swap(a, b, arr) {
         let temp;
@@ -120,4 +136,4 @@ class heap {
 }
 let h = new heap()
 //h.values=[3,25,19,33,41,63,71]
-console.log(h.findLargest([1, 2, 3, 3, 3, 5, 6], 3))
+console.log(h.lastStoneWeight([1,2]))
