@@ -3,11 +3,22 @@ class heap {
     index = NaN
     findLargest(arr, k) {
         for (let i = 0; i < arr.length; i++) {
-            this.insert(arr[i])
             if (this.values.length > k) {
-                this.delete()
+                return this.deleteHeap()
             }
         }
+    }
+
+    findKthLargest(nums, k) {
+        let i=0, val=0
+        for (let i = 0; i < nums.length; i++) {
+            this.insert(nums[i])
+        }
+        while(i<k){
+            val=this.deleteHeap()
+            i++
+        }
+        return val
     }
 
     lastStoneWeight(stones) {
@@ -15,8 +26,8 @@ class heap {
             this.insert(stones[i])
         }
         while(this.values.length>1){
-            let first=this.delete()
-            let second=this.delete()
+            let first=this.deleteHeap()
+            let second=this.deleteHeap()
             if(first!==second){
                 this.insert(first-second)
             }else{
@@ -33,7 +44,7 @@ class heap {
      */
 
 
-    delete() {
+    deleteHeap() {
         if (this.values.length === 0) return undefined;
 
         let extract = this.values[0];        // Max element
@@ -72,7 +83,7 @@ class heap {
     //         count++
     //         left=this.getLeft(index)
     //         right=this.getRight(index)
-    //     console.log("heap delete", this.values, left, right, index)
+    //     console.log("heap deleteHeap", this.values, left, right, index)
     //     }
     // }
 
@@ -135,5 +146,4 @@ class heap {
     }
 }
 let h = new heap()
-//h.values=[3,25,19,33,41,63,71]
-console.log(h.lastStoneWeight([1,2]))
+ console.log(h.findKthLargest([2,1],1))

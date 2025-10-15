@@ -6,7 +6,7 @@
     "configurations": [
         {
             "name": "Launch Program",
-            "program": "${workspaceFolder}/sai/knapsack-greedy/disjoint.js",
+            "program": "${workspaceFolder}/Trees.js",
             "request": "launch",
             "skipFiles": [
                 "<node_internals>/**"

@@ -69,20 +69,20 @@ class BST {
         return res
     }
 
-   inorder(root){
-    if(root.left != null && root.left.value < root.value)
-    this.inorder(root.left)
-    else
-    console.log("left false", root.left);
-    console.log(root.value)
-    if(root.right != null && root.right.value > root.value)
-    this.inorder(root.right)
-    else
-    console.log("right false", root.right);
-   }
+    inorder(root) {
+        if (root.left != null && root.left.value < root.value)
+            this.inorder(root.left)
+        else
+            console.log("left false", root.left);
+        console.log(root.value)
+        if (root.right != null && root.right.value > root.value)
+            this.inorder(root.right)
+        else
+            console.log("right false", root.right);
+    }
 
-   invertbt(){
-     let current, q = [], dele, res = [], swaped
+    invertbt() {
+        let current, q = [], dele, res = [], swaped
         current = this.root
         q.push(this.root)
         while (q.length > 0) {
@@ -98,14 +98,14 @@ class BST {
         }
         console.log("bfs", res)
         return res
-   }
+    }
 
-   swap(node){
-       let temp = node.left
-       node.left = node.right
-       node.right = temp
-       return node
-   }
+    swap(node) {
+        let temp = node.left
+        node.left = node.right
+        node.right = temp
+        return node
+    }
 }
 
 var bst = new BST()
