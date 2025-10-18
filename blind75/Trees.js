@@ -199,6 +199,18 @@ class Trees {
         return leftSub || rightSub
     }
 
+    //divide and conquer
+    maxDepth(root){
+        let lft, right
+        lft=root.left ? this.maxDepth(root.left) : 0
+        console.log("lft", root.left,lft);
+        right=root.right ? this.maxDepth(root.right) : 0
+        console.log("right", root.right,right);
+        console.log("-----max", Math.max(lft,right)+1);
+        return Math.max(lft,right)+1
+    }
+    
+
 }
 let tree = new Trees()
 tree.insert(3)
@@ -229,3 +241,4 @@ console.log("tree",tree)
 //console.log("maxdept", tree.maxDept())
 console.log("same", tree.isSameTree(tree, treeB))
 console.log("sub", tree.isSubTree(tree, treeC))
+console.log("Max", tree.maxDepth(tree.root))
