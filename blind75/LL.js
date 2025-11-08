@@ -132,6 +132,20 @@ class LL{
         return third
     }
 
+    addTwoNumbers(l1,l2){
+        let c1, c2, total, newList
+        c1=l1.head
+        c2=l2.head
+        while(c1!==null && c2!==null){
+            total=c1.val+c2.val
+            newList=new LLNode(total)
+            newList.next=null
+            c1=c1.next
+            c2=c2.next
+        }
+        return newList
+    }
+
 }
 var ll=new LL()
 ll.insert(1)//c
@@ -152,7 +166,7 @@ l.insert(14)
 //ll.delete(2)
 //ll.findMiddle()
 //ll.reverse()
-ll.merge(ll,l)
-console.log('ll',ll, "middle")
+//ll.merge(ll,l)
+console.log('ll',ll.addTwoNumbers(ll,l))
 
 

@@ -167,35 +167,31 @@ class Trees {
         return depth
     }
 
-    isSameTree(p,q){
-        let leftSame,rightSame
-        if(p==null && q==null){
+    isSameTree(tree1, tree2){
+        let left, right
+        if(tree1==null && tree2==null){
             return true
         }
-        if(p.root==null && q.root==null){
-            return true
-        }
-        if(p.root==null || q.root==null){
+        if(tree1==null && tree2!==null){
             return false
         }
-        if(p.root.value !== q.root.value){
+        if(tree1!==null && tree2==null){
             return false
         }
-        if(p.root.value===q.root.value){
-            console.log("same", p.root.value,q.root.value);
+        if(tree1.val !== tree2.val){
+            return false
         }
-        leftSame=this.isSameTree(p.left,q.left)
-        rightSame=this.isSameTree(p.right,q.right)
-        console.log("left", leftSame,"right", rightSame)
-        return leftSame && rightSame
+        left=this.isSameTree(tree1.left,tree2.left)
+        right=this.isSameTree(tree1.right, tree2.right)
+        return left&&right
     }
 
-    isSubTree(s,t){
+    isSubTree(root,subRoot){
         let leftSub, rightSub
-        if(s==null)return false
-        if(this.isSameTree(s,t)){return true}
-        leftSub=this.isSubTree(s.left,t)
-        rightSub=this.isSubTree(s.right,t)
+        if(subRoot==null)return false
+        if(this.isSameTree(root,subRoot)){return true}
+        leftSub=this.isSubTree(root.left,subRoot)
+        rightSub=this.isSubTree(root.right,subRoot)
         return leftSub || rightSub
     }
 

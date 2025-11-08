@@ -101,10 +101,10 @@ class stack {
           this.push(s[i])
         }
         else {
-          current=this.head
+          current = this.head
           if (this.getPrecedence(s[i]) > this.getPrecedence(this.head.data)) {
             this.push(s[i])
-            current=current.next
+            current = current.next
           } else {
             popedVal = this.poped()
             res += popedVal.data
@@ -114,17 +114,17 @@ class stack {
       }
       i++
     }
-    while(this.head!=null){
-      current=this.head
-      popedVal=this.poped()
-      res+=popedVal.data
-      current=current.next
+    while (this.head != null) {
+      current = this.head
+      popedVal = this.poped()
+      res += popedVal.data
+      current = current.next
     }
     console.log("res", res)
   }
 
   isOperator(val) {
-    if (val == "+" || val == "*" || val=="-"||val=="/") {
+    if (val == "+" || val == "*" || val == "-" || val == "/") {
       return true
     } else {
       return false
@@ -132,13 +132,72 @@ class stack {
   }
 
   getPrecedence(val) {
-    if (val == "+" || val=="-") {
+    if (val == "+" || val == "-") {
       return 1
-    } else if (val == "*" || val=="/") {
+    } else if (val == "*" || val == "/") {
       return 2
     } else {
       return 0
     }
+  }
+
+  evalRPN(tokens) {
+    let stack = [], total = 0, count = 0
+    for (let i = 0; i < tokens.length; i++) {
+      if (tokens[i] == "+" || tokens[i] == "-" || tokens[i] == "*" || tokens[i] == "/") {
+        let b = stack.pop()
+        let a = stack.pop()
+        console.log("ab", a, b)
+        switch (tokens[i]) {
+          case "+": total = a + b
+            break;
+          case "-": total = a - b
+            break;
+          case "*": total = a * b
+            break;
+          case "/": total = a / b
+            break;
+        }
+        stack.push(total)
+      } else {
+        stack.push(Number(tokens[i]))
+        console.log("stack", stack)
+      }
+    }
+    return stack.pop()
+  }
+
+  evalRPN(tokens) {
+    const stack = [];
+
+    for (const token of tokens) {
+      if (token === '+' || token === '-' || token === '*' || token === '/') {
+        const b = stack.pop();
+        const a = stack.pop();
+
+        let result;
+        switch (token) {
+          case '+':
+            result = a + b;
+            break;
+          case '-':
+            result = a - b;
+            break;
+          case '*':
+            result = a * b;
+            break;
+          case '/':
+            // truncates toward zero
+            result = Math.trunc(a / b);
+            break;
+        }
+
+        stack.push(result);
+      } else {
+        stack.push(Number(token));
+      }
+    }
+    return stack.pop();
   }
 }
 

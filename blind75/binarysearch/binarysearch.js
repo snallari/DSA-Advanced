@@ -12,6 +12,15 @@ class Search {
         }
     }
 
+    searchInSortedArray(arr, target){
+        //find mid
+        //low=0 high=arr.length-1
+        //target>=arr[low] target<=arr[mid]
+        //high=mid-1
+        //else low=mid+1
+    }
+
 }
 var search=new Search()
 search.bs([2,3,4,5,6], 3)
+search.searchInSortedArray([4,5,6,7,0,1,2], 0)
