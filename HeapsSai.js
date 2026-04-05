@@ -86,15 +86,15 @@ export default class HeapsSai{
 
 }
 
-let h = new HeapsSai()
-//10, 20, 5, 6, 1, 8, 9
-h.insert(10);
-h.insert(20);
-h.insert(5);
-h.insert(6);
-h.insert(1);
-h.insert(8);
-h.insert(9);
-console.log(h.values)
-h.delete()
-console.log(h.values)
+// let h = new HeapsSai()
+// //10, 20, 5, 6, 1, 8, 9
+// h.insert(10);
+// h.insert(20);
+// h.insert(5);
+// h.insert(6);
+// h.insert(1);
+// h.insert(8);
+// h.insert(9);
+// console.log(h.values)
+// h.delete()
+// console.log(h.values)
